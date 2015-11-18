@@ -9,7 +9,7 @@ Rails.application.configure do
       port:                 587,
       domain:               "spinboard-final.herokuapp.com",
       user_name:            'alex.tideman@gmail.com',
-      password:             'password',
+      password:             ENV['MANDRILL_KEY'],
       authentication:       'plain',
       enable_starttls_auto: true
   }

@@ -14,6 +14,7 @@ gem 'simplecov'
 gem "validate_url"
 gem 'responders', '~> 2.0'
 gem 'best_in_place'
+gem "figaro"
 
 
 group :development, :test do
