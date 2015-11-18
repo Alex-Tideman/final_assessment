@@ -1,10 +1,20 @@
 $(document).ready(function() {
-    tableFilter();
+    sorting();
+    linkSearch();
 });
 
-function tableFilter() {
-    $("#links_search input").keyup(function () {
-        $.get($("#links_search").attr("action"), $("#ideas_search").serialize(), null, "script");
+function sorting () {
+    $('#links th a, #links').live('click',
+        function () {
+            $.getScript(this.href);
+            return false;
+        }
+    );
+}
+
+function linkSearch () {
+    $("#links-search input").keyup(function () {
+        $.get($("#links-search").attr("action"), $("#links-search").serialize(), null, "script");
         return false;
     });
-};
+}

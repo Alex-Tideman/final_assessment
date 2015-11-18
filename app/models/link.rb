@@ -6,12 +6,19 @@ class Link < ActiveRecord::Base
   validates :url, :url => true
 
   def read?
-    if self.read == false
-      "Mark as Read"
-    else
+    if self.read
       "Mark as Unread"
+    else
+      "Mark as Read"
     end
   end
 
+  def self.search(search)
+    if search
+      where('title ILIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 
 end

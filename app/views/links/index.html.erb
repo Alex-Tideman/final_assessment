@@ -3,19 +3,12 @@
   <h3>Create a Link</h3>
   <%= render partial: 'form' %>
 </div>
-<div id="link-filter">
-  <h4>Search Links</h4>
-  <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-</div>
-<ul>
-<% @links.each do |link| %>
-    <li>Title: <%= link.title %></li>
-    <li>Link: <%= link.url %></li>
-      <% if link.read %>
-        <li><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :patch, class:"read-link", id:"read" %></li>
-      <% else %>
-        <li><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :patch, class:"read-link", id:"unread" %></li>
-      <% end %>
-      <li><%= link_to "Edit", edit_user_link_path(id: link.id, user_id:current_user.id) %></li><br>
+<%= form_tag user_links_path, method: "get", id: "links-search" do  %>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search Links", name: nil %>
+    </p>
 <% end %>
-</ul>
+<div id="links"><%= render 'links' %></div>
