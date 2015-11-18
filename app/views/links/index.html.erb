@@ -1,0 +1,16 @@
+<h1>My Links</h1>
+<div>
+  <h3>Create a Link</h3>
+  <%= render partial: 'form' %>
+</div>
+<ul>
+<% @links.each do |link| %>
+    <li>Title: <%= link.title %></li>
+    <li>Link: <%= link.url %></li>
+      <% if link.read %>
+        <li><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :patch, class:"read-link", id:"read" %></li><br>
+      <% else %>
+        <li><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :patch, class:"read-link", id:"unread" %></li><br>
+      <% end %>
+<% end %>
+</ul>
