@@ -12,8 +12,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'simplecov'
 gem "validate_url"
+gem 'responders', '~> 2.0'
+gem 'best_in_place'
+
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem "teaspoon-jasmine"
+  gem 'phantomjs'
   gem 'pry'
   gem 'database_cleaner'
   gem 'capybara'
