@@ -5,12 +5,12 @@
   <h3>Create a Link</h3>
   <%= render partial: 'form' %>
 </div>
-<%= form_tag user_links_path, method: "get", id: "links-search" do  %>
+<%= form_tag user_links_path, method: "get", id: "links_search" do  %>
     <%= hidden_field_tag :direction, params[:direction] %>
     <%= hidden_field_tag :sort, params[:sort] %>
     <p>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "Search Links", name: nil %>
     </p>
+    <div id="links"><%= render 'links' %></div>
 <% end %>
-<div id="links"><%= render 'links' %></div>

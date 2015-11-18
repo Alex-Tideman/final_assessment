@@ -4,7 +4,7 @@ $(document).ready(function() {
 });
 
 function sorting () {
-    $('#links th a, #links').live('click',
+    $('#link-table th a, #link-table').on('click',
         function () {
             $.getScript(this.href);
             return false;
@@ -13,8 +13,8 @@ function sorting () {
 }
 
 function linkSearch () {
-    $("#links-search input").keyup(function () {
-        $.get($("#links-search").attr("action"), $("#links-search").serialize(), null, "script");
+    $("#links_search input").keyup(function () {
+        $.get($("#links_search").attr("action"), $("#links_search").serialize(), null, "script");
         return false;
     });
 }
