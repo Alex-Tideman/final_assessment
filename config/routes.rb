@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create,:show] do
     resources :links do
       patch :update_read, on: :member
+      get :email, on: :member
+      patch :email_sent, on: :member
     end
   end
 

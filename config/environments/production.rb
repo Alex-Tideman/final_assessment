@@ -1,6 +1,19 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.delivery_method = :smtp
+  host = 'spinboard-final.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.mandrillapp.com',
+      port:                 587,
+      domain:               "spinboard-final.herokuapp.com",
+      user_name:            'alex.tideman@gmail.com',
+      password:             'password',
+      authentication:       'plain',
+      enable_starttls_auto: true
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

@@ -21,4 +21,8 @@ class Link < ActiveRecord::Base
     end
   end
 
+  def send_email
+    LinkMailer.send_link_email(self).deliver_now
+  end
+
 end

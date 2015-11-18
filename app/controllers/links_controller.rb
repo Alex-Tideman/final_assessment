@@ -43,6 +43,18 @@ class LinksController < ApplicationController
     redirect_to user_links_path(current_user)
   end
 
+  def email
+    @link = Link.find(params[:id])
+  end
+
+  def email_sent
+    @link = Link.find(params[:id])
+    @link.update_attributes(link_params)
+    @link.send_email
+    flash[:notice] = "Email sent to #{@link.outbound_email}"
+    redirect_to user_links_path(current_user)
+  end
+
   def live_search
     @links = Link.find_latest params[:s]
     render :layout => false
@@ -51,7 +63,7 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:link).permit(:url,:title,:user_id)
+    params.require(:link).permit(:url,:title,:user_id,:outbound_email)
   end
 
   def sort_column
