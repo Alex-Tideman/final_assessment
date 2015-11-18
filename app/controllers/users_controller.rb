@@ -1,13 +1,5 @@
 class UsersController < ApplicationController
 
-  def show
-    if current_user.id == params[:id].to_i
-      @user = User.find(params[:id])
-    else
-      render file: "/public/404"
-    end
-  end
-
   def new
     @user = User.new
   end
@@ -21,15 +13,6 @@ class UsersController < ApplicationController
       flash[:error] = "Invalid input - Please try creating user again"
       render :new
     end
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

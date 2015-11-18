@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_links_path(@user)
     else
+      flash[:error] = "Invalid input - Please try logging in again"
       render :new
     end
   end

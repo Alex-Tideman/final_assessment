@@ -55,11 +55,6 @@ class LinksController < ApplicationController
     redirect_to user_links_path(current_user)
   end
 
-  def live_search
-    @links = Link.find_latest params[:s]
-    render :layout => false
-  end
-
   private
 
   def link_params
