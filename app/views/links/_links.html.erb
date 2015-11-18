@@ -11,9 +11,9 @@
         <td><%= link.title %></td>
         <td><%= link.url %></td>
         <% if link.read %>
-            <td><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :patch, class:"read-link", id:"read" %></li></td>
+            <td><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :post, class:"read-link", id:"read" %></td>
         <% else %>
-            <td><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :patch, class:"read-link", id:"unread" %></li></td>
+            <td><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :post, class:"read-link", id:"unread" %></td>
         <% end %>
         <td><%= link_to "Edit", edit_user_link_path(id: link.id, user_id:current_user.id) %></td>
         <td><%= link_to "Recommend Link", email_user_link_path(id: link.id, user_id:current_user.id) %></td>
