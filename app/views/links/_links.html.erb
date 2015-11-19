@@ -3,21 +3,19 @@
     <th><%= sortable "title" %></th>
     <th><%= sortable "url" %></th>
     <th><%= sortable "read" %></th>
-    <th>Edit</th>
     <th>Recommend Link</th>
   </tr>
-  <% for link in @links %>
+  <% @links.each do |link| %>
       <tr>
         <% if link.read %>
-          <td class="read"><%= link.title%></td>
-          <td class="read"><%= link.url %></td>
+          <td class="read"><%= best_in_place [current_user,link], :title, value: link.title, as: :textarea %></td>
+          <td class="read"><%= best_in_place [current_user,link], :url, value: link.url, as: :textarea %></td>
           <td><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :post %></td>
         <% else %>
-            <td class="unread"><%= link.title %></td>
-            <td class="unread"><%= link.url %></td>
+            <td class="unread"><%= best_in_place [current_user,link], :title, value: link.title, as: :textarea %></td>
+            <td class="unread"><%= best_in_place [current_user,link], :url, value: link.url, as: :textarea %></td>
             <td><%= link_to link.read?, update_read_user_link_path(id: link.id, user_id: current_user.id), method: :post %></td>
         <% end %>
-        <td><%= link_to "Edit", edit_user_link_path(id: link.id, user_id:current_user.id) %></td>
         <td><%= link_to "Recommend Link", email_user_link_path(id: link.id, user_id:current_user.id) %></td>
         </tr>
   <% end %>

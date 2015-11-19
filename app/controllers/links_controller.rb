@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   helper_method :sort_column, :sort_direction
+  respond_to :html, :json
 
   def index
     @links = Link.where(user_id: current_user.id).search(params[:search]).order(sort_column + ' ' + sort_direction)
@@ -26,11 +27,10 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     if @link.update_attributes(link_params)
       flash[:notice] = "Link Updated"
-      redirect_to user_links_path(current_user)
     else
       flash[:error] = "Invalid URL"
-      redirect_to user_links_path(current_user)
     end
+    respond_with @link
   end
 
   def update_read

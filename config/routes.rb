@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
+  resources :links, only: [:show]
+
   resources :users, only: [:new, :create,:show] do
     resources :links do
       post :update_read, on: :member

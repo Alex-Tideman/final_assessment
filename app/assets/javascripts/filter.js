@@ -1,12 +1,13 @@
 $(document).ready(function() {
     sorting();
     linkSearch();
+    $('.best_in_place').best_in_place();
 });
 
 function sorting () {
     $('#link-table th a, #link-table').on('click',
         function () {
-            $.getScript(this.href);
+            $.get(this.href);
             return false;
         }
     );
